@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function incoming() { return request.resource.data; }
+    function isValidId(id) { return id is string && id.size() <= 128; }
+
+    function isValidScoreSubmission(data) {
+      return data.keys().hasAll(['school', 'classNo', 'seatNo', 'process', 'funtion practice', 'structure practice', 'assessment', 'totalScore', 'createdAt'])
+        && data.keys().size() == 9
+        && data.school is string && data.school.size() <= 100
+        && data.classNo is string && data.classNo.size() <= 20
+        && data.seatNo is string && data.seatNo.size() <= 20
+        && data.process is number
+        && data['funtion practice'] is number
+        && data['structure practice'] is number
+        && data.assessment is number
+        && data.totalScore is number
+        && data.createdAt == request.time;
+    }
+
+    match /students/{studentId} {
+      allow write: if isValidId(studentId) && isValidScoreSubmission(incoming());
+    }
+  }
+}

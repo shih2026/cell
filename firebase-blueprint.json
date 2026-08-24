@@ -1,0 +1,27 @@
+{
+  "entities": {
+    "ScoreSubmission": {
+      "title": "Score Submission",
+      "description": "A student's score submission",
+      "type": "object",
+      "properties": {
+        "school": { "type": "string" },
+        "classNo": { "type": "string" },
+        "seatNo": { "type": "string" },
+        "process": { "type": "number" },
+        "funtion practice": { "type": "number" },
+        "structure practice": { "type": "number" },
+        "assessment": { "type": "number" },
+        "totalScore": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["school", "classNo", "seatNo", "process", "funtion practice", "structure practice", "assessment", "totalScore", "createdAt"]
+    }
+  },
+  "firestore": {
+    "students/{studentId}": {
+      "schema": { "$ref": "#/entities/ScoreSubmission" },
+      "description": "Student high scores"
+    }
+  }
+}
