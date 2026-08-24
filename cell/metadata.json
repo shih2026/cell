@@ -1,0 +1,6 @@
+{
+  "name": "細胞解密：生命中樞實驗室",
+  "description": "專為國中七年級設計的細胞自主學習網頁，整合 AI 互動與 Google Sheets 數據紀錄。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

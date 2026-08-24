@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-brand-headline: #00473e;
+  --color-brand-bg: #f2f7f5;
+  --color-brand-paragraph: #475d5b;
+  --color-brand-button: #faae2b;
+  --color-brand-secondary: #ffa8ba;
+  --color-brand-tertiary: #fa5246;
+  --color-brand-border: #00332c;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+@layer base {
+  h1, h2, h3 {
+    @apply font-display font-black text-brand-headline tracking-tight uppercase;
+  }
+}
+
+@layer components {
+  .btn-bold {
+    @apply relative transition-all duration-100 active:translate-y-1 active:shadow-none border-2 border-brand-border rounded-xl font-black uppercase tracking-widest;
+    box-shadow: 4px 4px 0px var(--color-brand-border);
+  }
+
+  .card-bold {
+    @apply bg-white border-4 border-brand-border rounded-[2rem] p-8 shadow-[8px_8px_0px_#00332c] relative;
+  }
+  
+  .quiz-option {
+    @apply w-full p-5 text-left rounded-2xl border-4 border-brand-border bg-white shadow-[4px_4px_0px_#00332c] transition-all text-xl font-bold active:translate-y-1 active:shadow-none;
+  }
+
+  .quiz-option-selected-correct {
+    @apply bg-green-50 text-green-700 border-green-700 shadow-[4px_4px_0px_currentColor];
+  }
+
+  .quiz-option-selected-wrong {
+    @apply bg-red-50 text-brand-tertiary border-brand-tertiary shadow-[4px_4px_0px_currentColor];
+  }
+
+  /* iPad Specific Adjustments */
+  @media (orientation: portrait) {
+    .content-area {
+      @apply px-8 py-10;
+    }
+  }
+}
