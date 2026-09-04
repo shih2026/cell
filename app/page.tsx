@@ -102,6 +102,15 @@ export default function LearningApp() {
     setUnlockedTabs(STAGES.map((_, i) => i));
   };
 
+  const handleUnlockWithPassword = () => {
+    const pwd = window.prompt("請輸入解鎖密碼：");
+    if (pwd === "cbb") {
+      unlockAll();
+    } else if (pwd !== null) {
+      alert("密碼錯誤！");
+    }
+  };
+
   const renderTabContent = (idx: number) => {
     switch (idx) {
       case 0:
@@ -228,6 +237,13 @@ export default function LearningApp() {
               {idx + 1 < 10 ? `0${idx + 1}` : idx + 1} {tab.title}
             </button>
           ))}
+          <button
+            onClick={handleUnlockWithPassword}
+            className="px-6 py-2 rounded-full whitespace-nowrap transition-all text-sm font-black border-2 border-brand-border bg-gray-800 text-white hover:bg-gray-700 flex items-center gap-2"
+            title="Unlock All Pages"
+          >
+            <Unlock size={16} /> 解鎖全部
+          </button>
         </div>
       </header>
 
@@ -245,15 +261,6 @@ export default function LearningApp() {
           </motion.div>
         </AnimatePresence>
       </main>
-
-      {/* Floating UI */}
-      <button
-        onClick={unlockAll}
-        className="fixed bottom-32 left-10 p-4 bg-orange-500 text-white font-black rounded-full shadow-[4px_4px_0px_#000000] z-50 hover:scale-110 transition-transform border-4 border-brand-border"
-        title="DEBUG: Unlock All"
-      >
-        <Unlock size={24} />
-      </button>
 
       {/* Progress Footer */}
       <footer className="fixed bottom-0 left-0 right-0 max-w-[1024px] mx-auto bg-brand-headline h-20 flex items-center px-10 gap-8 z-50 rounded-t-[3rem] border-x-8 border-t-8 border-brand-border">

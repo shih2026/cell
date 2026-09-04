@@ -8,14 +8,14 @@
         "school": { "type": "string" },
         "classNo": { "type": "string" },
         "seatNo": { "type": "string" },
-        "process": { "type": "number" },
-        "funtion practice": { "type": "number" },
-        "structure practice": { "type": "number" },
-        "assessment": { "type": "number" },
+        "learningScore": { "type": "number" },
+        "factoryHighScore": { "type": "number" },
+        "sortingHighScore": { "type": "number" },
+        "summaryHighScore": { "type": "number" },
         "totalScore": { "type": "number" },
         "createdAt": { "type": "string", "format": "date-time" }
       },
-      "required": ["school", "classNo", "seatNo", "process", "funtion practice", "structure practice", "assessment", "totalScore", "createdAt"]
+      "required": ["school", "classNo", "seatNo", "learningScore", "factoryHighScore", "sortingHighScore", "summaryHighScore", "totalScore", "createdAt"]
     }
   },
   "firestore": {

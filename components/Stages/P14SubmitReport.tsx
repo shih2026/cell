@@ -47,10 +47,10 @@ export default function P14SubmitReport({
       school: studentInfo.school,
       classNo: studentInfo.classNo,
       seatNo: studentInfo.seatNo,
-      process: learningScore,
-      "funtion practice": factoryHighScore,
-      "structure practice": sortingHighScore,
-      assessment: summaryHighScore,
+      learningScore,
+      factoryHighScore,
+      sortingHighScore,
+      summaryHighScore,
       totalScore,
       createdAt: serverTimestamp(),
     };
@@ -63,19 +63,12 @@ export default function P14SubmitReport({
 
       // 2. 寫入 Google 試算表
       // 請將下方的 scriptUrl 替換為您部署的 Google Apps Script 網址
-      const scriptUrl = "https://script.google.com/macros/s/AKfycbzluDemRjCS2-IT2aoz4AtcruIMSKrmi4xSHfV3Y2jAVnP38Nebc1NZMaqry5b0HQme/exec"; 
-      if (scriptUrl) {
+      const scriptUrl = "請替換為您的_Google_Apps_Script_Web_App_URL"; 
+      if (scriptUrl !== "請替換為您的_Google_Apps_Script_Web_App_URL") {
         await fetch(scriptUrl, {
           method: "POST",
           body: JSON.stringify({
-            school: studentInfo.school,
-            classNo: studentInfo.classNo,
-            seatNo: studentInfo.seatNo,
-            process: learningScore,
-            "funtion practice": factoryHighScore,
-            "structure practice": sortingHighScore,
-            assessment: summaryHighScore,
-            totalScore: totalScore,
+            ...submissionData,
             createdAt: new Date().toISOString()
           }),
           headers: {

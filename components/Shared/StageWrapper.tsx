@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { CheckCircle2, Lock, CirclePlay } from "lucide-react";
+import { CheckCircle2, Lock } from "lucide-react";
 import QuizComponent from "./QuizComponent";
 import { QUIZ_DATA } from "@/lib/constants";
 

@@ -39,24 +39,22 @@ function doPost(e) {
   var sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
-    sheet.appendRow(["時間戳記", "學校", "班級", "座號", "process", "funtion practice", "structure practice", "assessment", "總分"]);
+    sheet.appendRow(["Timestamp", "Class", "SeatNumber", "School", "Score", "Type"]);
   }
   
   var params = JSON.parse(e.postData.contents);
+  var timestamp = new Date();
   
   sheet.appendRow([
-    new Date(),
-    params.school,
+    timestamp,
     params.classNo,
     params.seatNo,
-    params.process,
-    params["funtion practice"],
-    params["structure practice"],
-    params.assessment,
-    params.totalScore
+    params.school,
+    params.score,
+    params.type || "Default"
   ]);
   
-  return ContentService.createTextOutput(JSON.stringify({result: "success"}))
+  return ContentService.createTextOutput(JSON.stringify({result: "success", timestamp: timestamp}))
     .setMimeType(ContentService.MimeType.JSON);
 }
 ```
