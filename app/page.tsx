@@ -99,14 +99,11 @@ export default function LearningApp() {
   };
 
   const unlockAll = () => {
-    setUnlockedTabs(STAGES.map((_, i) => i));
-  };
-
-  const handleUnlockWithPassword = () => {
-    const pwd = window.prompt("請輸入解鎖密碼：");
-    if (pwd === "cbb") {
-      unlockAll();
-    } else if (pwd !== null) {
+    const password = prompt("請輸入管理員密碼以解鎖所有頁面：");
+    if (password === "cbb") {
+      setUnlockedTabs(STAGES.map((_, i) => i));
+      alert("所有頁面已解鎖！");
+    } else if (password !== null) {
       alert("密碼錯誤！");
     }
   };
@@ -238,11 +235,10 @@ export default function LearningApp() {
             </button>
           ))}
           <button
-            onClick={handleUnlockWithPassword}
-            className="px-6 py-2 rounded-full whitespace-nowrap transition-all text-sm font-black border-2 border-brand-border bg-gray-800 text-white hover:bg-gray-700 flex items-center gap-2"
-            title="Unlock All Pages"
+            onClick={unlockAll}
+            className="px-6 py-2 rounded-full whitespace-nowrap transition-all text-sm font-black border-2 border-brand-border bg-orange-500 text-white hover:bg-orange-600 shadow-sm flex items-center gap-2"
           >
-            <Unlock size={16} /> 解鎖全部
+            <Unlock size={16} /> 解鎖頁面
           </button>
         </div>
       </header>

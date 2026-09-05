@@ -9,15 +9,15 @@ service cloud.firestore {
     function isValidId(id) { return id is string && id.size() <= 128; }
 
     function isValidScoreSubmission(data) {
-      return data.keys().hasAll(['school', 'classNo', 'seatNo', 'learningScore', 'factoryHighScore', 'sortingHighScore', 'summaryHighScore', 'totalScore', 'createdAt'])
+      return data.keys().hasAll(['school', 'classNo', 'seatNo', 'process', 'funtion practice', 'structure practice', 'assessment', 'totalScore', 'createdAt'])
         && data.keys().size() == 9
         && data.school is string && data.school.size() <= 100
         && data.classNo is string && data.classNo.size() <= 20
         && data.seatNo is string && data.seatNo.size() <= 20
-        && data.learningScore is number
-        && data.factoryHighScore is number
-        && data.sortingHighScore is number
-        && data.summaryHighScore is number
+        && data.process is number
+        && data['funtion practice'] is number
+        && data['structure practice'] is number
+        && data.assessment is number
         && data.totalScore is number
         && data.createdAt == request.time;
     }
