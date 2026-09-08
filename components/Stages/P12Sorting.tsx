@@ -17,8 +17,10 @@ import DropdownTextQuiz from "@/components/Shared/DropdownTextQuiz";
 
 export default function P12Sorting({
   updateGameHighScore,
+  unlockNext,
 }: {
   updateGameHighScore: (p: number) => void;
+  unlockNext: () => void;
 }) {
   const [gameState, setGameState] = useState<"start" | "playing" | "result">(
     "start",
@@ -59,7 +61,8 @@ export default function P12Sorting({
 
   const finishGame = useCallback(() => {
     setGameState("result");
-  }, []);
+    unlockNext();
+  }, [unlockNext]);
 
   useEffect(() => {
     if (gameState === "result" && !hasScored) {

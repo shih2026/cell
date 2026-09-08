@@ -140,13 +140,22 @@ export default function LearningApp() {
             updateGameHighScore={updateFactoryHighScore}
             studentInfo={studentInfo}
             setStudentInfo={setStudentInfo}
+            unlockNext={unlockNext}
           />
         );
       case 12:
-        return <P12Sorting updateGameHighScore={updateSortingHighScore} />;
+        return (
+          <P12Sorting
+            updateGameHighScore={updateSortingHighScore}
+            unlockNext={unlockNext}
+          />
+        );
       case 13:
         return (
-          <P13SummaryChallenge updateGameHighScore={updateSummaryHighScore} />
+          <P13SummaryChallenge
+            updateGameHighScore={updateSummaryHighScore}
+            unlockNext={unlockNext}
+          />
         );
       case 14:
         return (

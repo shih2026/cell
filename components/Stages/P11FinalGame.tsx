@@ -19,10 +19,12 @@ export default function P11FinalGame({
   updateGameHighScore,
   studentInfo,
   setStudentInfo,
+  unlockNext,
 }: {
   updateGameHighScore: (p: number) => void;
   studentInfo: any;
   setStudentInfo: any;
+  unlockNext: () => void;
 }) {
   const [gameState, setGameState] = useState<"idle" | "playing" | "result">(
     "idle",
@@ -49,7 +51,8 @@ export default function P11FinalGame({
 
   const finishGame = useCallback(() => {
     setGameState("result");
-  }, []);
+    unlockNext();
+  }, [unlockNext]);
 
   useEffect(() => {
     if (gameState === "result" && !hasScored) {

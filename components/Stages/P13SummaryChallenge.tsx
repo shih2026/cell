@@ -17,8 +17,10 @@ import DropdownTextQuiz from "@/components/Shared/DropdownTextQuiz";
 
 export default function P13SummaryChallenge({
   updateGameHighScore,
+  unlockNext,
 }: {
   updateGameHighScore: (p: number) => void;
+  unlockNext: () => void;
 }) {
   const [gameState, setGameState] = useState<"start" | "playing" | "result">(
     "start",
@@ -43,6 +45,7 @@ export default function P13SummaryChallenge({
     setScore(total);
     setGameState("result");
     updateGameHighScore(total);
+    unlockNext();
   };
 
   if (gameState === "start") {
